@@ -9,7 +9,7 @@ Steps:<br>
 2) Enter a virtual environment in your local repository directory with: <br>
    $ . .venv/bin/activate
 
-3) Install Flask (https://flask.palletsprojects.com/en/3.0.x/installation/):<br>
+3) Install Flask (for more help: https://flask.palletsprojects.com/en/3.0.x/installation/):<br>
   (env)$ pip install Flask
 
 4) Prepare the database with:<br>
