@@ -80,5 +80,5 @@ def delete(id):
     conn.execute('DELETE FROM LineItem WHERE id = ?', (id,))
     conn.commit()
     conn.close()
-    flash('"{}" was successfully deleted!'.format(LineItem['lineItemDate']))
+    flash('"{}" was successfully deleted!'.format(lineItem['lineItemDate']))
     return redirect(url_for('index'))
