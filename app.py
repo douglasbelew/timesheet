@@ -24,7 +24,7 @@ def index():
     conn = get_db_connection()
     #timeSheets = conn.execute('SELECT * FROM TimeSheet').fetchall()
 
-    timeSheets = conn.execute('SELECT sum(lineItemMinutes)totalMinutes, TimeSheet.* \
+    timeSheets = conn.execute('SELECT sum(lineItemMinutes*hourlyRate/60) totalCost, sum(lineItemMinutes)totalMinutes, TimeSheet.* \
 	FROM TimeSheet \
         LEFT OUTER JOIN LineItem \
 	ON LineItem.timeSheet_id = TimeSheet.id \

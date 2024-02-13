@@ -9,6 +9,7 @@
         Description: {{ timeSheet['description'] }} <br />
         Hourly Rate: {{ timeSheet['hourlyRate'] }} <br />
         Total Minutes: {{ timeSheet['totalMinutes'] }} <br />
+        Total Cost: ${{ timeSheet['totalCost'] }} <br />
 
         <a href="{{ url_for('timeSheet', id=timeSheet['id']) }}">
             <span class="badge badge-warning">Edit</span>
