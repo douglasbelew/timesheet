@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Edit Entry for {{ lineItem['lineItemDate'] }} {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="title">Date</label>
+        <input type="text" name="lineItemDate"
+               placeholder="Enter Date" class="form-control"
+               value="{{ request.form['lineItemDate'] or lineItem['lineItemDate'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Minutes</label>
+        <input type="text" name="lineItemMinutes"
+               placeholder="Enter Minutes" class="form-control"
+               value="{{ request.form['lineItemMinutes'] or lineItem['lineItemMinutes'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="content">Description</label>
+        <textarea name="description" placeholder="Enter Description"
+                  class="form-control">{{ request.form['description']  or lineItem['description'] }}</textarea>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+<hr>
+
+<form action="{{ url_for('delete', id=lineItem['id']) }}" method="POST">
+    <input type="submit" value="Delete Line Item"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Are you sure you want to delete this line item?')">
+</form>
+{% endblock %}

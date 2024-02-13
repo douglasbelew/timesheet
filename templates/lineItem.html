@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %}
+       Date:  {{ lineItem['lineItemDate'] }} <br \>
+       Minutes:  {{ lineItem['lineItemMinutes'] }} <br \>
+       Description:  {{ lineItem['description'] }}
+    {% endblock %}</h2>
+    <a href="{{ url_for('edit', id=lineItem['id']) }}">
+       <span class="badge badge-warning">Edit</span>
+    </a>
+{% endblock %}
