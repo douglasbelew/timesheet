@@ -4,19 +4,18 @@
 <h1>{% block title %} Create a New Time Entry {% endblock %}</h1>
 
 <form method="post">
-    <input type="hidden" name="timeSheet_id" value = {{ timeSheet_id }}>
     <div class="form-group">
-        <label for="title">Date</label>
-        <input type="text" name="lineItemDate"
+        <label for="title">Submitted Date</label>
+        <input type="text" name="submittedDate"
                placeholder="Enter Date" class="form-control"
-               value="{{ request.form['lineItemDate'] }}"></input>
+               value="{{ request.form['submittedDate'] }}"></input>
     </div>
 
     <div class="form-group">
-        <label for="title">Minutes</label>
-        <input type="text" name="lineItemMinutes"
-               placeholder="Enter Minutes" class="form-control"
-               value="{{ request.form['lineItemMinutes'] }}"></input>
+        <label for="title">Hourly Rate</label>
+        <input type="text" name="hourlyRate"
+               placeholder="Enter Rate" class="form-control"
+               value="{{ request.form['hourlyRate'] }}"></input>
     </div>
 
     <div class="form-group">

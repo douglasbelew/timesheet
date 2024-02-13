@@ -1,44 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <script>
+    <h1>{% block title %} Time Sheets! {% endblock %}</h1>
 
-       function updateAmount() {
-          var rate = document.getElementById("hourlyRate");
-          var amount = document.getElementById("totalAmount");
-          var minutes = document.getElementById("totalMinutes");
-          amount.value = rate.value * minutes.value / 60;
-       }
-       window.onload = updateAmount;
-   </script>
-
-    {% set ns = namespace (totalMinutes = 0) %}
-    <h1>{% block title %} Line Items {% endblock %}</h1>
-    {% for lineItem in lineItems %}
-       {% set ns.totalMinutes = ns.totalMinutes + lineItem['lineItemMinutes'] %}
-
-        Date: <a href="{{ url_for('lineItem', id=lineItem['id']) }}">
-            {{ lineItem['lineItemDate'] }}
+    {% for timeSheet in timeSheets %}
+        {{ timeSheet['timeSheetDate'] }}
         </a> <br />
-        Minutes: {{ lineItem['lineItemMinutes'] }} <br />
-        Description: {{ lineItem['description'] }} <br />
+        Description: {{ timeSheet['description'] }} <br />
+        Hourly Rate: {{ timeSheet['hourlyRate'] }} <br />
+        Total Minutes: {{ timeSheet['totalMinutes'] }} <br />
 
-        <a href="{{ url_for('edit', id=lineItem['id']) }}">
+        <a href="{{ url_for('timeSheet', id=timeSheet['id']) }}">
             <span class="badge badge-warning">Edit</span>
         </a>
         <hr>
     {% endfor %}
 
+    <a class="nav-link" href="{{url_for('createTimeSheet', )}}">New TimeSheet</a>
 
-    Total Minutes = {{ ns.totalMinutes }}
-    <input type = "hidden" id="totalMinutes" value = {{ ns.totalMinutes }} >
-    <hr>
-    Hourly Rate = 
-       <input onChange="updateAmount()" type="text" id="hourlyRate" name="hourlyRate" placeholder="Enter Rate" 
-               value="100"></input>
-
-    <hr>
-    Total Amount Entered = <input type = "text" id="totalAmount" name="totalAmount" value = 100></input>
 
     
 {% endblock %}
